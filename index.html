@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div class="app">
+    总分: <div class="total"></div>
+    数学: <div class="math"></div>
+    英语: <div class="english"></div>
+    语文: <div class="chinese"></div>
+  </div>
+  <script src="http://www.ekwing.com/resource/com/js/jquery.js"></script>
+  <script type="module" src="/static/index.js"></script>
+  <script src="https://cdn.bootcss.com/socket.io/2.1.0/socket.io.js"></script>
+      <script>
+let socket = io('http://localhost:3000')
+socket.on('message', data => {
+  if (data.change) {
+    socket.close()
+    window.location.reload()
+  }
+})
+      </script>
+</body>
+</html>
